@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello from Axum</title>
+  <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+  <style>
+    body.dark {
+      --bg-color: #000;
+      --bg-secondary-color: #131316;
+      --font-color: #f5f5f5;
+      --color-grey: #ccc;
+      --color-darkGrey: #777;
+    }
+
+    :root {
+      --grid-maxWidth: 700px;
+    }
+
+    main {
+      text-align: center;
+      width:80%;
+      margin:0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <form method="post" action="/question/{{ question.id }}">
+      <legend>{{ question.title }}</legend>
+      <input name="student_identifier" type="identifier" placeholder="Sua matrícula / Seu Nome" />
+      <ul>
+        {% for opt in options %}
+        <li>
+          <label>
+            <input type="radio" name="option_id" id="{{ opt.id }}" value="{{ opt.id }}" />
+            {{ opt.body }}
+          </label>
+        </li>
+        {% endfor %}
+      </ul>
+      <button type="submit" class="pure-button pure-button-primary">Responder</button>
+    </form>
+  </main>
+</body>
+</html>
